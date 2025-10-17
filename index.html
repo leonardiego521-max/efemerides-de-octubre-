@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Entrada - Museo Virtual</title>
+  <style>
+    :root{
+      --fondo:#0b0f13;
+      --pared:#1c1a17;
+      --marco:#33281f;
+      --column:#3b3127;
+      --wood1:#3b2b1a;
+      --wood2:#633f26;
+      --glass: rgba(255,255,255,0.06);
+      --glass-high: rgba(255,255,255,0.12);
+      --accent:#e6b35c;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(800px 600px at 50% 20%, rgba(230,179,92,0.08), transparent 60%),
+        linear-gradient(180deg, #15110e 0%, #0b0f13 80%);
+      color:#fff;
+    }
+
+    /* Contenedor principal */
+    .container{
+      width: min(1100px, 94vw);
+      padding: 40px;
+      text-align:center;
+      position:relative;
+    }
+
+    /* Fondo tipo pared victoriana */
+    .pared{
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, var(--column) 0 6%, transparent 6% 94%, var(--column) 94% 100%),
+        repeating-linear-gradient(0deg, var(--pared) 0 6px, #201e1a 6px 12px);
+      border: 12px solid var(--marco);
+      border-radius: 12px;
+      box-shadow:
+        inset 0 0 40px rgba(0,0,0,0.7),
+        0 0 80px rgba(0,0,0,0.8);
+      z-index:-1;
+    }
+
+    h1{
+      margin:0 0 18px 0;
+      font-size: clamp(20px, 3vw, 28px);
+      letter-spacing:1px;
+      color:#f9e8c9;
+      text-shadow:0 2px 10px rgba(0,0,0,0.6);
+    }
+
+    p.lead{
+      margin: 0 0 30px 0;
+      color: #cbd5df;
+      font-size: 15px;
+    }
+
+    /* Escena de puertas */
+    .hall{
+      display:grid;
+      grid-template-columns: 1fr 420px 1fr;
+      gap: 30px;
+      align-items:end;
+      justify-items:center;
+      perspective:1200px;
+      margin-top:30px;
+    }
+
+    .door-wrap{
+      width:100%;
+      max-width:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .door{
+      width: 320px;
+      height: 460px;
+      background: linear-gradient(180deg, var(--wood1), var(--wood2));
+      border-radius: 6px;
+      box-shadow: 0 18px 40px rgba(2,6,10,0.6), inset 0 6px 18px rgba(255,255,255,0.03);
+      position:relative;
+      transform-origin: left center;
+      transition: transform 400ms cubic-bezier(.2,.9,.3,1), box-shadow 300ms;
+      cursor: pointer;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* puerta central ligeramente más grande y con borde dorado */
+    .door.center{
+      transform-origin: center center;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.7), 0 0 0 6px rgba(230,179,92,0.06);
+    }
+
+    /* jambas y marco */
+    .frame{
+      position:absolute;
+      inset: 18px;
+      border-radius:4px;
+      border: 8px solid rgba(0,0,0,0.18);
+      pointer-events:none;
+      box-shadow: inset 0 6px 16px rgba(255,255,255,0.02);
+    }
+
+    .knob{
+      position:absolute;
+      right:42px;
+      width:18px;
+      height:18px;
+      background: linear-gradient(180deg,#f4c67a,#d39b45);
+      border-radius:50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      transform: translateY(0);
+    }
+
+    /* ventana/vidrio superior */
+    .glass{
+      position:absolute;
+      top:28px;
+      left:50%;
+      transform:translateX(-50%);
+      width: 70%;
+      height: 28%;
+      background: linear-gradient(180deg, var(--glass-high), var(--glass));
+      border-radius:6px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    /* placa del museo */
+    .placa{
+      position:absolute;
+      bottom:24px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:15px;
+      padding:8px 14px;
+      background: rgba(0,0,0,0.28);
+      border-radius:6px;
+      color:#f0ead6;
+      font-weight:600;
+      letter-spacing:0.6px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+
+    /* hover — puertas se abren un poco */
+    .door:hover{ transform: rotateY(-7deg) translateY(-6px); box-shadow: 0 28px 60px rgba(0,0,0,0.7); }
+    .door.center:hover{ transform: scale(1.02) rotateY(-4deg) translateY(-6px); }
+
+    /* estilo del botón central (enlace) */
+    .door-link{
+      position:relative;
+      z-index:2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:80%;
+      height:80%;
+      text-decoration:none;
+      color:inherit;
+      font-weight:700;
+      font-size:18px;
+      letter-spacing:0.6px;
+      text-align:center;
+    }
+
+    .door .cta{
+      display:inline-block;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(4px);
+      transition: transform 180ms ease;
+    }
+
+    .door .cta:active{ transform: translateY(1px) scale(0.995); }
+
+    /* pie de pagina pequeño */
+    .foot{
+      margin-top:28px;
+      font-size:12px;
+      color:#9fb0c0;
+    }
+
+    /* animación de "abrir" completa al click (solo estética) */
+    .door.open{
+      transform: rotateY(-75deg) translateX(40px) translateZ(20px);
+      transition: transform 700ms cubic-bezier(.2,.9,.3,1);
+    }
+
+    /* versión móvil: apila puertas */
+    @media (max-width:880px){
+      .hall{ grid-template-columns: 1fr; gap:16px; padding: 0 12px; }
+      .door{ width:100%; max-width:360px; height: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="pared"></div>
+
+    <h1>Bienvenido al Museo Virtual</h1>
+    <p class="lead">Selecciona la puerta central para entrar al museo.</p>
+
+    <div class="hall" role="navigation" aria-label="Entrada al museo">
+      <!-- puerta izquierda -->
+      <div class="door-wrap">
+        <div class="door" aria-hidden="true">
+          <div class="frame"></div>
+          <div class="glass"></div>
+          <div class="knob" style="right:36px;"></div>
+          <div class="placa">Grupo 507</div>
+        </div>
+      </div>
+
+      <!-- puerta central (ENLACE) -->
+      <div class="door-wrap">
+        <a class="door center" id="puertaCentral" href="q1.html" title="Entrar al Museo" aria-label="Entrar al Museo">
+          <div class="frame"></div>
+          <div class="glass"></div>
+          <div class="knob" style="right:44px;"></div>
+          <div class="door-link">
+            <span class="cta">Entrar al Museo</span>
+          </div>
+          <div class="placa">Entrada Principal</div>
+        </a>
+      </div>
+
+      <!-- puerta derecha -->
+      <div class="door-wrap">
+        <div class="door" aria-hidden="true">
+          <div class="frame"></div>
+          <div class="glass"></div>
+          <div class="knob" style="right:36px;"></div>
+          <div class="placa">Sueña en Grande</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">Museo Virtual - Inspiración y Creatividad © 2025</div>
+  </div>
+
+  <script>
+    // Efecto de apertura visual al presionar la puerta central
+    (function(){
+      const puerta = document.getElementById('puertaCentral');
+      puerta.addEventListener('mousedown', () => puerta.classList.add('open'));
+      puerta.addEventListener('mouseup', () => puerta.classList.remove('open'));
+      puerta.addEventListener('mouseleave', () => puerta.classList.remove('open'));
+
+      // Teclado accesible
+      puerta.addEventListener('keydown', (e) => {
+        if(e.key === "Enter" || e.key === " "){
+          puerta.click();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

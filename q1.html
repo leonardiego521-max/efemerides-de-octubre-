@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Museo Virtual</title>
+  <style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background-color: #111;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      margin: 0;
+    }
+
+    /* Pasillo con animación */
+    .pasillo {
+      display: flex;
+      animation: caminar 50s linear infinite;
+      padding: 50px;
+      gap: 100px;
+      width: max-content;
+      cursor: grab; /* icono de mano */
+    }
+
+    @keyframes caminar {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .cuadro {
+      position: relative;
+      width: 600px;
+      height: 700px;
+      background-color: #222;
+      border: 5px solid #555;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .cuadro:hover {
+      transform: scale(1.05);
+    }
+
+    .cuadro img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .cuadro:hover .info {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Museo Virtual</h1>
+
+  <div class="pasillo" id="pasillo">
+    <div class="cuadro">
+      <img src="cafe.webp" alt="1 de octubre: Día Internacional del café.">
+      <div class="info">1 de octubre: Día Internacional del café.</div>
+    </div>
+    <div class="cuadro">
+      <img src="ta.gif" alt="Noche Estrellada">
+      <div class="info"><A HREF="2.HTML" TARGER="-BLANK">2 de octubre de 1968 – La Matanza de Tlatelolco 🕊️</a>
+
+<br>Un día triste y lleno de memoria para México. Estudiantes salieron a las calles buscando justicia, libertad y democracia.<br> Aunque fueron silenciados, su valor sigue inspirando a las nuevas generaciones a no rendirse.</div>
+    </div>
+    <div class="cuadro">
+      <img src="cat.gif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="4.HTML" TARGER="-BLANK">4 de octubre – Día Mundial de los Animales 🐾</a>
+
+Peludos, emplumados, con aletas o escamas… todos tienen su día. Este festejo busca que respetemos y cuidemos a los animales que comparten nuestro planeta. ¡Ellos también son parte de la gran familia de la Tierra!</div>
+    </div>
+
+    <div class="cuadro">
+      <img src="cons.jpg" alt="Mona Lisa">
+      <div class="info"><A HREF="4.HTML" TARGER="-BLANK">4 de octubre de 1824 – Se promulga la Primera Constitución Federal de la República 🇲🇽</a>
+
+México dio un paso enorme hacia su organización como nación libre. Este documento marcó el inicio de nuestras leyes y de un gobierno más justo. ¡Un hito histórico que nos recuerda el valor de la independencia y la justicia!</div>
+    </div>
+    <div class="cuadro">
+      <img src="ro.gif" alt="Noche Estrellada">
+      <div class="info"><A HREF="5.HTML" TARGER="-BLANK">5 de octubre – Día Mundial de los Docentes 🍎</a>
+
+Hoy se honra a quienes enseñan con pasión, paciencia y creatividad. Ser maestro es sembrar conocimiento, esperanza y valores en cada estudiante. ¡Gracias por formar mentes brillantes todos los días!</div>
+    </div>
+    <div class="cuadro">
+      <img src="san.avif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="5.HTML" TARGER="-BLANK">5 de octubre de 1910 – Francisco I. Madero firma el Plan de San Luis 📜</a>
+
+Con su famosa frase “¡Sufragio efectivo, no reelección!”, Madero encendió la chispa que inició la Revolución Mexicana. Su valentía y convicción inspiraron al pueblo a luchar por libertad y democracia.</div>
+    </div>
+    <div class="cuadro">
+      <img src="al.gif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="7.HTML" TARGER="-BLANK">7 de octubre – Día Mundial del Algodón 👕</a>
+Ese suave y blanco tesoro natural que usamos a diario tiene su propio día. El algodón viste al mundo, impulsa la economía y representa el trabajo de muchas manos. ¡Aplaudamos a esta noble fibra que nos da comodidad!</div>
+    </div>
+    <div class="cuadro">
+      <img src="cuer.gif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="8.HTML" TARGER="-BLANK">8 de octubre – Día Mundial de las Aves Migratorias 🕊️</a>
+
+Miles de aves cruzan continentes para sobrevivir, guiadas solo por su instinto y las estrellas. Este día nos invita a cuidar su entorno y admirar su belleza. ¡Ellas son las viajeras más libres del planeta!</div>
+    </div>
+    <div class="cuadro">
+      <img src="corr.gif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="9.HTML" TARGER="-BLANK">9 de octubre – Día Mundial del Correo 📬</a>
+
+Antes de los mensajes instantáneos existían cartas con tinta, papel y emoción. Hoy celebramos a quienes hacen posible que las palabras viajen por el mundo. ¡Un mensaje puede cambiar el día de alguien!</div>
+    </div>
+    <div class="cuadro">
+      <img src="12.webp" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="10.HTML" TARGER="-BLANK">10 de octubre – Día Nacional de las Cactáceas 🌵</a>
+
+Sí, ¡los cactus también tienen su día! Orgullosamente mexicanos, estas plantas resistentes florecen donde otros se rinden. Nos enseñan que incluso en los lugares más duros, la vida puede ser hermosa.</div>
+    </div>
+    <div class="cuadro">
+      <img src="qw.gif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="12.HTML" TARGER="-BLANK">12 de octubre de 1492 – Día de la Raza 🌎</a>
+
+Se conmemora el encuentro entre dos mundos: Europa y América. Fue el inicio de un intercambio cultural que transformó la historia. Hoy reflexionamos sobre la diversidad, el respeto y la unión de los pueblos.</div>
+    </div>
+    <div class="cuadro">
+      <img src="rul.webp" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="15.HTML" TARGER="-BLANK">15 de octubre – Día Internacional de las Mujeres Rurales 👩‍🌾</a>
+Mujeres trabajadoras del campo, guardianas de la tierra y del alimento. Este día las reconoce por su esfuerzo y sabiduría ancestral. Gracias a ellas, el campo sigue vivo y fuerte.</div>
+    </div>
+    <div class="cuadro">
+      <img src="tra.jpg" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="15.HTML" TARGER="-BLANK">15 de octubre – Día de las Personas con Discapacidad Visual 👁️‍🗨️</a>
+Un día para promover la inclusión, el respeto y la empatía. Recordemos que ver con el corazón también es una forma de percibir el mundo. ¡La verdadera visión está en la mente y en los valores!</div>
+    </div>
+    <div class="cuadro">
+      <img src="sp.gif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="16.HTML" TARGER="-BLANK">16 de octubre – Día Mundial de la Alimentación 🍞</a>
+La comida une culturas, familias y sonrisas. Este día nos invita a valorar los alimentos y combatir el desperdicio. ¡Cada plato cuenta en la lucha contra el hambre en el mundo!</div>
+    </div>
+    <div class="cuadro">
+      <img src="iu.gif" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="17.HTML" TARGER="-BLANK">17 de octubre de 1953 – Igualdad de derechos para la mujer mexicana ⚖️</a>
+¡Un triunfo histórico! Las mujeres mexicanas obtuvieron el derecho al voto y a la participación política. Gracias a su lucha, hoy la voz femenina se escucha en todos los espacios.</div>
+    </div>
+    <div class="cuadro">
+      <img src="vv.webp" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="17.HTML" TARGER="-BLANK">17 de octubre – Día Internacional para la Erradicación de la Pobreza 🤝</a>
+Un llamado a la solidaridad global. Nadie debería vivir sin oportunidades. Este día nos recuerda que con empatía, educación y acción podemos construir un mundo más justo.</div>
+    </div>
+    <div class="cuadro">
+      <img src="lo.jpg" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="19.HTML" TARGER="-BLANK">19 de octubre de 1970 – Muerte de Lázaro Cárdenas del Río 🇲🇽</a>
+Recordamos al presidente que transformó México con justicia social, educación y apoyo al pueblo. Su legado sigue vivo en la historia y en los valores nacionales.</div>
+    </div>
+    <div class="cuadro">
+      <img src="ma.webp" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="19.HTML" TARGER="-BLANK">19 de octubre – Día Internacional de Lucha contra el Cáncer de Mama 🎀</a>
+Día de fuerza, esperanza y prevención. Miles de mujeres enfrentan esta lucha con valentía. ¡Tócate para que no te toque! La detección temprana salva vidas.</div>
+    </div> 
+   <div class="cuadro">
+      <img src="mez.jpg" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="20.HTML" TARGER="-BLANK">20 de octubre – Día Nacional del Mezcal 🥃</a>
+Bebida ancestral que guarda el espíritu del maguey y la tradición mexicana. ¡Salud por el mezcal, que alegra los corazones y cuenta historias de nuestras tierras!</div>
+    </div>
+   <div class="cuadro">
+      <img src="apa.webp" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="22.HTML" TARGER="-BLANK">22 de octubre de 1814 – Constitución de Apatzingán 📖</a>
+Uno de los primeros documentos que dio forma a la independencia de México. Su espíritu de libertad y justicia marcó el rumbo hacia un país soberano.</div>
+    </div>
+   <div class="cuadro">
+      <img src="mns.jpg" alt="La Persistencia de la Memoria">
+      <div class="info"><A HREF="22.HTML" TARGER="-BLANK">22 de octubre – Día de la y el Médico 🩺</a>
+Los héroes de la salud que salvan vidas cada día. Con vocación, ciencia y corazón, los médicos cuidan de todos nosotros. ¡Gracias por su entrega y servicio!</div>
+    </div>
+   <div class="cuadro">
+      <img src="" alt="La Persistencia de la Memoria">
+      <div class="info">La Persistencia de la Memoria - Salvador Dalí</div>
+    </div>
+  </div>
+
+  <script>
+    const pasillo = document.getElementById('pasillo');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    pasillo.addEventListener('mousedown', (e) => {
+      pasillo.style.animationPlayState = 'paused'; // pausa animación
+      isDown = true;
+      pasillo.classList.add('active');
+      startX = e.pageX - pasillo.offsetLeft;
+      scrollLeft = pasillo.scrollLeft;
+      pasillo.style.cursor = 'grabbing';
+    });
+
+    pasillo.addEventListener('mouseleave', () => {
+      isDown = false;
+      pasillo.style.cursor = 'grab';
+      pasillo.style.animationPlayState = 'running'; // reanuda animación
+    });
+
+    pasillo.addEventListener('mouseup', () => {
+      isDown = false;
+      pasillo.style.cursor = 'grab';
+      pasillo.style.animationPlayState = 'running'; // reanuda animación
+    });
+
+    pasillo.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - pasillo.offsetLeft;
+      const walk = (x - startX) * 1.5; // velocidad del arrastre
+      pasillo.scrollLeft = scrollLeft - walk;
+    });
+
+    // ✅ NUEVO: mover con la rueda del ratón
+    pasillo.addEventListener('wheel', (e) => {
+      e.preventDefault(); // evita el scroll vertical
+      pasillo.style.animationPlayState = 'paused'; // pausa la animación
+      const velocidad = 2; // cambia este número si quieres más o menos rapidez
+      pasillo.scrollLeft += e.deltaY * velocidad;
+    }, { passive: false });
+  </script>
+</body>
+</html>
